@@ -2,11 +2,12 @@ import { Navbar } from "../components/Navbar";
 import { Delete } from "react-feather";
 import { useState } from "react";
 import { useSetAtom } from "jotai";
-import { historyAtom } from "../state";
+import { historyAtom, notificationAtom } from "../state";
 import shortid from "shortid"
 
 export default function HomePage() {
 	const [input, setInput] = useState("");
+	const setNotification = useSetAtom(notificationAtom);
 
 	const setHistory = useSetAtom(historyAtom);
 
@@ -15,6 +16,7 @@ export default function HomePage() {
 		if (number > 0) {
 			setHistory(h => [{ number, time: new Date(), id: shortid() }, ...h]);
 			setInput("");
+			setNotification({ time: Date.now(), message: `Succesfully recorded ${number} trees` })
 		}
 	}
 

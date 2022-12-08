@@ -1,12 +1,14 @@
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { useMemo } from "react";
 import { X } from "react-feather";
 import { Navbar } from "../components/Navbar";
 import type { TreeRecord } from "../state";
+import { notificationAtom } from "../state";
 import { historyAtom } from "../state";
 
 export default function HistoryPage() {
 	const [history, setHistory] = useAtom(historyAtom)
+	const setNotification = useSetAtom(notificationAtom);
 
 	const historyPerDay = useMemo(() => history.reduce<Record<string, TreeRecord[]>>((groups, record) => {
 		const date = record.time.toISOString().substring(0, 10)
@@ -16,7 +18,9 @@ export default function HistoryPage() {
 	}, {}), [history])
 
 	const handleUndo = (id: string) => () => {
+		const record = history.find(_ => _.id === id);
 		setHistory(prev => prev.filter(record => record.id !== id))
+		setNotification({ time: Date.now(), message: `Succesfully undid ${record?.number} trees` })
 	}
 
 	return <main className="flex flex-col justify-between h-full py-6 px-4">

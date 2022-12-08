@@ -7,8 +7,9 @@ export type TreeRecord = {
 	id :string;
 }
 
-export const userAtom = atom<undefined | string>(undefined);
+export const userAtom = atom<boolean>(true);
 export const historyAtom = atom<TreeRecord[]>(generateHistory())
+export const notificationAtom = atom<{message:string;time:number}|undefined>(undefined);
 
 function generateHistory() {
 	const history: TreeRecord[] =[];

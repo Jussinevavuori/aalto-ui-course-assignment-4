@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animate_notification {
+	animation: animate_notification 2700ms forwards;
+}
+
+@keyframes animate_notification {
+	0% {
+		translate: 0 -200%;
+	}
+	5% {
+		translate: 0 -0;
+	}
+	95% {
+		translate: 0 -0;
+	}
+	100% {
+		translate: 0 -200%;
+	}
+}

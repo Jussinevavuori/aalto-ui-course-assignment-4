@@ -2,9 +2,10 @@ import { Box, Map } from "react-feather"
 
 export type Props = {
 	title?: string;
+	hideLocation?: boolean;
 }
 
-export function Navbar({ title }: Props) {
+export function Navbar({ title, hideLocation }: Props) {
 
 	return <div className="flex items-center justify-between">
 		<p className="text-2xl font-bold gap-2 flex items-center">
@@ -23,11 +24,14 @@ export function Navbar({ title }: Props) {
 				</>
 			}
 		</p>
-		<div className="px-3 py-1 border rounded-full border-emerald-300 text-sm flex items-center gap-2">
-			<p>
-				Lusaka
-			</p>
-			<Map size={16} className="text-emerald-700" />
-		</div>
+		{
+			!hideLocation &&
+			<div className="px-3 py-1 border rounded-full border-emerald-300 text-sm flex items-center gap-2">
+				<p>
+					Lusaka
+				</p>
+				<Map size={16} className="text-emerald-700" />
+			</div>
+		}
 	</div>
 }
