@@ -24,7 +24,9 @@ Implemented UI design for application for recording planted trees and viewing in
 [Link to source code in GitHub repository](https://github.com/Jussinevavuori/aalto-ui-course-assignment-4)
 
 {% note %}
+
 **Note:** The project has been created with mobile screen sizes in mind. When opening on a desktop, please (1) open browser developer tools, (2) toggle device toolbar in top left corner of developer tools and (3) select a mobile phone dimensions for previewing.
+
 {% endnote %}
 
 ---
